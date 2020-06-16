@@ -2,7 +2,7 @@
 
 This actions updates the local GitHub Actions configuration `yml`-files. You need an extra Github repository as source for your GitHub Actions configuration. To auto-commit the changes within the action run you can use the[stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action) action.
 
-## Requiredments
+## Requirements
 
 - GitHub repository that contains your personal GitHub Actions configuration files
 
