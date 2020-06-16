@@ -1,4 +1,4 @@
-name: actions-action-configuration-update
+name: actions-action-configuration-autoupdate
 description: Updates the GitHub Action configuration `.yml` files if necessary
 inputs:
   token:
@@ -14,6 +14,9 @@ inputs:
     description: 'Branch/Commit/Tag from source repository where to get updated GitHub Actions configuration files'
     default: 'master'
     required: false
+outputs:
+  isUpdated:
+    description: 'Is set to `true` if one configuration file is changed'
 runs:
   using: 'node12'
   main: 'dist/index.js'

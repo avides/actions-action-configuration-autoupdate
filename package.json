@@ -1,17 +1,16 @@
 {
-  "name": "actions-action-configuration-update",
+  "name": "actions-action-configuration-autoupdate",
   "version": "1.0.0",
   "description": "GitHub Action that updates the GitHub Action configuration `.yml` files if necessary",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src/index.js",
     "package": "ncc build src/index.js --minify",
-    "test": "eslint src/index.js && jest",
     "packageAndAddToCommit": "ncc build src/index.js --minify && git add dist/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avides/actions-project-version-check.git"
+    "url": "git+https://github.com/avides/actions-action-configuration-autoupdate.git"
   },
   "keywords": [
     "GitHub",
@@ -21,9 +20,9 @@
   "author": "Henrik Adamski",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/avides/actions-project-version-check/issues"
+    "url": "https://github.com/avides/actions-action-configuration-autoupdate/issues"
   },
-  "homepage": "https://github.com/avides/actions-project-version-check#readme",
+  "homepage": "https://github.com/avides/actions-action-configuration-autoupdate#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
     "@actions/github": "^2.1.1"

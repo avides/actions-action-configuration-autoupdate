@@ -23,10 +23,14 @@ async function run() {
             let filePath = './.github/workflows/' + fileName;
 
             octokit.repos.getContents({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
+                let current = fs.readFileSync(filePath);
                 
                 // update file
                 fs.writeFileSync(filePath, response.data);
 
+                if (current != response.data) {
+                    core.setOutput('isUpdated', 'true');
+                }
             }).catch(error => console.log('Cannot resolve `' + fileName + '` in target branch! ErrMsg => ' + error));
         });
     } catch (error) {

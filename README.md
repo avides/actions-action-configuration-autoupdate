@@ -1,6 +1,10 @@
-# actions-action-configuration-update
+# actions-action-configuration-autoupdate
 
-This actions updates the local GitHub Actions configuration `yml`-files. You need an extra Github repository as source for your GitHub Actions configuration. To auto-commit the changes within the action run you can use [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action).
+This actions updates the local GitHub Actions configuration `yml`-files. You need an extra Github repository as source for your GitHub Actions configuration. To auto-commit the changes within the action run you can use the[stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action) action.
+
+## Requiredments
+
+- GitHub repository that contains your personal GitHub Actions configuration files
 
 ## Inputs
 
@@ -18,36 +22,34 @@ This actions updates the local GitHub Actions configuration `yml`-files. You nee
 
 ### `source-ref`
 
-Branch/Commit/Tag from source repository where to get updated GitHub Actions configuration files
+Branch/Commit/Tag from source repository where to get updated GitHub Actions configuration files (default: master)
 
 ## Outputs
 
 ### `isUpdated`
 
-If the version update is valid then the new version is available as output. Usage:
+Is set to `true` if one configuration file is changed. Usage:
 ```
-- uses: avides/actions-project-version-check@latest
-  id: actions_project_version_check
+- uses: avides/actions-action-configuration-autoupdate@v1.0.0
+  id: actions_action_configuration_autoupdate
   with:
-    token: ${{ secrets.GITHUB_TOKEN }}
-    file-to-check: pom.xml
+    token: ${{ secrets.PAT }}
+    actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
+    source-repository: your/workflow-configuration-repository
 
-- name: use-version-from-check
-  run: echo "New version is: " ${{ steps.actions_project_version_check.outputs.version }}
+- name: action-configuration-updated
+  if: ${{ steps.actions_action_configuration_autoupdate.outputs.isUpdated }} == 'true'
+  run: exit 1
 ```
 
 ## Example usage
 ```
-- name: action-configuration-update
-  uses: avides/action-configuration-update@v1.0.0
+- name: action-configuration-autoupdate
+  uses: avides/action-configuration-autoupdate@v1.0.0
   with:
     token: ${{ secrets.PAT }}
-    actions-configuration-files: workflow.yml
+    actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
     source-repository: your/workflow-configuration-repository
-
-- name: action-configuration-updated
-  if: ${{ <expression> }}
-  run: exit 0
 ```
 
 ## Example usage with auto-commit
@@ -58,11 +60,11 @@ If the version update is valid then the new version is available as output. Usag
     ref: ${{ github.head_ref }}
     token: ${{ secrets.PAT }}
 
-- name: action-configuration-update
-  uses: avides/action-configuration-update@v1.0.0
+- name: action-configuration-autoupdate
+  uses: avides/action-configuration-autoupdate@v1.0.0
   with:
     token: ${{ secrets.PAT }}
-    actions-configuration-files: some-dir/workflow.yml
+    actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
     source-repository: your/workflow-configuration-repository
 
 - uses: stefanzweifel/git-auto-commit-action@v4
