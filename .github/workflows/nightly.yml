@@ -2,7 +2,7 @@ name: nightly
  
 on:
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 0 * * 1
  
 jobs:
   nightly:
@@ -11,7 +11,7 @@ jobs:
  
     steps:
       - name: checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
  
       - name: test
         run: |

@@ -26,7 +26,7 @@ Branch/Commit/Tag from source repository where to get updated GitHub Actions con
 
 ## Outputs
 
-### `isUpdated`
+### `updated`
 
 Is set to `true` if one configuration file is changed. Usage:
 ```
@@ -38,7 +38,7 @@ Is set to `true` if one configuration file is changed. Usage:
     source-repository: your/workflow-configuration-repository
 
 - name: action-configuration-updated
-  if: ${{ steps.actions_action_configuration_autoupdate.outputs.isUpdated }} == 'true'
+  if: ${{ steps.actions_action_configuration_autoupdate.outputs.updated }} == 'true'
   run: exit 1
 ```
 
