@@ -1,0 +1,19 @@
+name: release
+ 
+on:
+  push:
+    branches:
+      - master
+ 
+jobs:
+  release:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v2
+
+      - name: test
+        run: |
+          npm install

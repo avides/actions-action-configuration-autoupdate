@@ -1,0 +1,22 @@
+name: actions-action-configuration-update
+description: Updates the GitHub Action configuration `.yml` files if necessary
+inputs:
+  token:
+    description: 'The repository token is used to request the remote GitHub Actions configuration-files'
+    required: true
+  actions-configuration-files:
+    description: 'GitHub Action configuration filename with path to the location in your remote repository'
+    required: true
+  source-repository:
+    description: 'GitHub repository where your GitHub Action configuration is located'
+    required: true
+  source-ref:
+    description: 'Branch/Commit/Tag from source repository where to get updated GitHub Actions configuration files'
+    default: 'master'
+    required: false
+outputs:
+  updated:
+    description: 'Is set to `true` if one configuration file is changed'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
