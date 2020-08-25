@@ -30,7 +30,7 @@ Branch/Commit/Tag from source repository where to get updated GitHub Actions con
 
 Is set to `true` if one configuration file is changed. Usage:
 ```
-- uses: avides/actions-action-configuration-autoupdate@v1.0.0
+- uses: avides/actions-action-configuration-autoupdate@v1.1.0
   id: actions_action_configuration_autoupdate
   with:
     token: ${{ secrets.PAT }}
@@ -45,7 +45,7 @@ Is set to `true` if one configuration file is changed. Usage:
 ## Example usage
 ```
 - name: action-configuration-autoupdate
-  uses: avides/action-configuration-autoupdate@v1.0.0
+  uses: avides/action-configuration-autoupdate@v1.1.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
@@ -61,7 +61,7 @@ Is set to `true` if one configuration file is changed. Usage:
     token: ${{ secrets.PAT }}
 
 - name: action-configuration-autoupdate
-  uses: avides/action-configuration-autoupdate@v1.0.0
+  uses: avides/action-configuration-autoupdate@v1.1.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml

@@ -1,5 +1,8 @@
-name: actions-action-configuration-update
+name: Auto update your GitHub Action configuration files
 description: Updates the GitHub Action configuration `.yml` files if necessary
+branding:
+  icon: "arrow-down-circle"
+  color: "green"
 inputs:
   token:
     description: 'The repository token is used to request the remote GitHub Actions configuration-files'

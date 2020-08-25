@@ -7,7 +7,7 @@ const fs = require('fs');
 // main
 async function run() {
     try {
-        var octokit = new github.GitHub(core.getInput('token'));
+        var octokit = new github.getOctokit(core.getInput('token'));
 
         var ref = core.getInput('source-ref');
 
@@ -22,7 +22,7 @@ async function run() {
             let fileName = file.includes('/') ? file.substring(file.lastIndexOf('/') + 1, file.length) : file;
             let filePath = './.github/workflows/' + fileName;
 
-            octokit.repos.getContents({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
+            octokit.repos.getContent({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
                 let current = fs.readFileSync(filePath);
 
                 if (current != response.data) {
