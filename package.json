@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/avides/actions-action-configuration-autoupdate#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0"
   },
   "devDependencies": {
