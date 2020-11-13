@@ -1,6 +1,6 @@
 {
   "name": "actions-action-configuration-autoupdate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "GitHub Action that updates the GitHub Action configuration `.yml` files if necessary",
   "main": "dist/index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/avides/actions-action-configuration-autoupdate#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0"
   },
   "devDependencies": {
