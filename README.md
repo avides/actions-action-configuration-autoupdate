@@ -45,7 +45,7 @@ Is set to `true` if one configuration file is changed. Usage:
 ## Example usage
 ```
 - name: action-configuration-autoupdate
-  uses: avides/action-configuration-autoupdate@v1.1.0
+  uses: avides/action-configuration-autoupdate@v1.2.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
@@ -61,7 +61,7 @@ Is set to `true` if one configuration file is changed. Usage:
     token: ${{ secrets.PAT }}
 
 - name: action-configuration-autoupdate
-  uses: avides/action-configuration-autoupdate@v1.1.0
+  uses: avides/action-configuration-autoupdate@v1.2.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
