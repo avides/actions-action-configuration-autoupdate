@@ -22,7 +22,7 @@ async function run() {
             let fileName = file.includes('/') ? file.substring(file.lastIndexOf('/') + 1, file.length) : file;
             let filePath = './.github/workflows/' + fileName;
 
-            octokit.repos.getContent({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
+            octokit.rest.repos.getContent({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
                 let current = fs.readFileSync(filePath);
 
                 if (current != response.data) {
