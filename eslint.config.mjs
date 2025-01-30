@@ -22,7 +22,7 @@ export default [...compat.extends("eslint:recommended"), {
         },
 
         ecmaVersion: 11,
-        sourceType: "commonjs",
+        sourceType: "module",
     },
 
     rules: {},

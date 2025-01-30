@@ -1,7 +1,6 @@
 // imports
 import { getInput, setOutput, setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
-
 import { readFileSync, writeFileSync } from 'fs';
 
 // main
