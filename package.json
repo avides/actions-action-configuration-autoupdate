@@ -1,12 +1,13 @@
 {
   "name": "actions-action-configuration-autoupdate",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "GitHub Action that updates the GitHub Action configuration `.yml` files if necessary",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src/index.js",
     "package": "ncc build src/index.js --minify",
-    "packageAndAddToCommit": "ncc build src/index.js --minify && git add dist/index.js"
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -17,22 +18,22 @@
     "Actions",
     "JavaScript"
   ],
-  "author": "Henrik Adamski",
+  "author": "Henrik Adamski & Finn Egbers",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/avides/actions-action-configuration-autoupdate/issues"
   },
   "homepage": "https://github.com/avides/actions-action-configuration-autoupdate#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.1"
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.22.3",
-    "eslint": "^8.13.0",
-    "pre-commit": "^1.2.2"
-  },
-  "pre-commit": [
-    "packageAndAddToCommit"
-  ]
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.19.0",
+    "@vercel/ncc": "^0.38.3",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7"
+  }
 }

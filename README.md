@@ -29,8 +29,9 @@ Branch/Commit/Tag from source repository where to get updated GitHub Actions con
 ### `updated`
 
 Is set to `true` if one configuration file is changed. Usage:
-```
-- uses: avides/actions-action-configuration-autoupdate@v1.3.0
+
+``` yaml
+- uses: avides/actions-action-configuration-autoupdate@v2.0.0
   id: actions_action_configuration_autoupdate
   with:
     token: ${{ secrets.PAT }}
@@ -43,9 +44,10 @@ Is set to `true` if one configuration file is changed. Usage:
 ```
 
 ## Example usage
-```
+
+``` yaml
 - name: action-configuration-autoupdate
-  uses: avides/actions-action-configuration-autoupdate@v1.3.0
+  uses: avides/actions-action-configuration-autoupdate@v2.0.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
@@ -53,7 +55,8 @@ Is set to `true` if one configuration file is changed. Usage:
 ```
 
 ## Example usage with auto-commit
-```
+
+``` yaml
 - name: checkout
   uses: actions/checkout@v3
   with:
@@ -61,13 +64,13 @@ Is set to `true` if one configuration file is changed. Usage:
     token: ${{ secrets.PAT }}
 
 - name: action-configuration-autoupdate
-  uses: avides/actions-action-configuration-autoupdate@v1.3.0
+  uses: avides/actions-action-configuration-autoupdate@v2.0.0
   with:
     token: ${{ secrets.PAT }}
     actions-configuration-files: path/to/files/workflow1.yml,path/to/files/workflow2.yml
     source-repository: your/workflow-configuration-repository
 
-- uses: stefanzweifel/git-auto-commit-action@v4
+- uses: stefanzweifel/git-auto-commit-action@v5
   with:
     file_pattern: .github/workflows/*.yml
     commit_message: Update GitHub Action configuration

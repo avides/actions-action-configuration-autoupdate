@@ -1,21 +1,20 @@
 // imports
-const core = require('@actions/core');
-const github = require('@actions/github');
-
-const fs = require('fs');
+import { getInput, setOutput, setFailed } from '@actions/core';
+import { getOctokit } from '@actions/github';
+import { readFileSync, writeFileSync } from 'fs';
 
 // main
 async function run() {
     try {
-        var octokit = new github.getOctokit(core.getInput('token'));
+        const octokit = new getOctokit(getInput('token'));
 
-        var ref = core.getInput('source-ref');
+        const ref = getInput('source-ref');
 
-        var repositoryAndOwner = core.getInput('source-repository').split('/');
-        var owner = repositoryAndOwner[0];
-        var repo = repositoryAndOwner[1]
+        const repositoryAndOwner = getInput('source-repository').split('/');
+        const owner = repositoryAndOwner[0];
+        const repo = repositoryAndOwner[1]
 
-        var configurationFiles = core.getInput('actions-configuration-files');
+        let configurationFiles = getInput('actions-configuration-files');
         configurationFiles = configurationFiles.split(',');
 
         configurationFiles.forEach(file => {
@@ -23,16 +22,16 @@ async function run() {
             let filePath = './.github/workflows/' + fileName;
 
             octokit.rest.repos.getContent({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
-                let current = fs.readFileSync(filePath);
+                let current = readFileSync(filePath);
 
                 if (current != response.data) {
-                    fs.writeFileSync(filePath, response.data);
-                    core.setOutput('updated', 'true');
+                    writeFileSync(filePath, response.data);
+                    setOutput('updated', 'true');
                 }
-            }).catch(error => core.setFailed('Cannot resolve `' + fileName + '` in target branch! ErrMsg => ' + error));
+            }).catch(error => setFailed('Cannot resolve `' + fileName + '` in target branch! ErrMsg => ' + error));
         });
     } catch (error) {
-        core.setFailed(error.message);
+        setFailed(error.message);
     }
 }
 
