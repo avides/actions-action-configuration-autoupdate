@@ -1,6 +1,6 @@
 {
   "name": "actions-action-configuration-autoupdate",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "GitHub Action that updates the GitHub Action configuration `.yml` files if necessary",
   "type": "module",
   "main": "dist/index.js",
