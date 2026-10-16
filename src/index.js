@@ -1,7 +1,7 @@
 // imports
 import { getInput, setOutput, setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 // main
 async function run() {
@@ -22,7 +22,8 @@ async function run() {
             let filePath = './.github/workflows/' + fileName;
 
             octokit.rest.repos.getContent({ owner: owner, repo: repo, path: file, ref: ref, headers: { 'Accept': 'application/vnd.github.v3.raw' } }).then(response => {
-                let current = readFileSync(filePath);
+                // a configuration file that is newly added to the list does not exist yet in the target repository
+                let current = existsSync(filePath) ? readFileSync(filePath) : null;
 
                 if (current != response.data) {
                     writeFileSync(filePath, response.data);
