@@ -1,7 +1,7 @@
 // imports
 import { getInput, setOutput, setFailed } from '@actions/core';
 import { getOctokit } from '@actions/github';
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 // main
 async function run() {
@@ -26,6 +26,8 @@ async function run() {
                 let current = existsSync(filePath) ? readFileSync(filePath) : null;
 
                 if (current != response.data) {
+                    // the workflows directory may not exist yet either, e.g. in a repository without any workflow
+                    mkdirSync('./.github/workflows', { recursive: true });
                     writeFileSync(filePath, response.data);
                     setOutput('updated', 'true');
                 }
